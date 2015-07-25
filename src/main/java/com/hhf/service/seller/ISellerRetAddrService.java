@@ -1,5 +1,5 @@
 /**
- * Copyright (c)2015-? by www.hhf.com. All rights reserved.
+ * Copyright (c)2015-? by www.hehefang.com. All rights reserved.
  * 
  */
 package com.hhf.service.seller;
