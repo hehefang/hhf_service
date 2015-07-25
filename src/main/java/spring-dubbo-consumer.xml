@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+ 	<dubbo:application name="hhf_service"/> 	
+ 	<dubbo:consumer timeout="3000" check="false" retries="0"/> 	
+ 	
+ 	<!-- sms service -->  
+ 	<dubbo:reference id="dubbo_smsService" interface="com.hhf.service.sms.ISmsService"/>
+ 	
+ 	<!-- order service -->   
+ 	<dubbo:reference id="dubbo_orderService" interface="com.hhf.service.order.IOrderService" />
+ 	<dubbo:reference id="dubbo_cartService" interface="com.hhf.service.order.ICartService" />
+ 	<dubbo:reference id="dubbo_userService" interface="com.hhf.service.user.IUserService" />
+ 	<dubbo:reference id="dubbo_geoService" interface="com.hhf.service.user.IGeoService" />
+ 	<dubbo:reference id="dubbo_addressService" interface="com.hhf.service.user.IAddressService" />
+ 	<dubbo:reference id="dubbo_retOrderService" interface="com.hhf.service.order.IRetOrderService" />
+ 	<dubbo:reference id="dubbo_logisticsCompanyService" interface="com.hhf.service.order.ILogisticsCompanyService" />
+ 	
+ 	<!-- user service --> 
+ 	<dubbo:reference id="dubbo_categoryService" interface="com.hhf.service.product.ICategoryService" />
+ 	<dubbo:reference id="dubbo_attributeService" interface="com.hhf.service.product.IAttributeService" />
+ 	<dubbo:reference id="dubbo_brandService" interface="com.hhf.service.product.IBrandService" />
+ 	<dubbo:reference id="dubbo_specService" interface="com.hhf.service.product.ISpecService" />
+    <dubbo:reference id="dubbo_paymentServices" interface="com.hhf.service.payment.IPaymentServices" />
+   	
+   	<!-- product service --> 
+   	<dubbo:reference id="dubbo_productService" interface="com.hhf.service.product.IProductService" />
+   	<dubbo:reference id="dubbo_brandShowService" interface="com.hhf.service.product.IBrandShowService" />
+   	<dubbo:reference id="dubbo_sellerBrandService" interface="com.hhf.service.product.ISellerBrandService" />
+   	
+   	<!-- seller service --> 
+   	<dubbo:reference id="dubbo_sellerLoginService" interface="com.hhf.service.seller.ISellerLoginService" />
+   	<dubbo:reference id="dubbo_sellerService" interface="com.hhf.service.seller.ISellerService" />
+   	<dubbo:reference id="dubbo_sellerApplyService" interface="com.hhf.service.seller.ISellerApplyService" />
+   	<dubbo:reference id="dubbo_sellerRetAddrService" interface="com.hhf.service.seller.ISellerRetAddrService" />   
+   	<dubbo:reference id="dubbo_sellerReceiptService" interface="com.hhf.service.seller.ISellerReceiptService" />   
+   	
+   	<!-- schedule service --> 
+   	<dubbo:reference id="dubbo_brandShowScheduleService" interface="com.hhf.service.schedule.IBrandShowScheduleService" />
+   	
+   	<beans profile="develop">
+	    <dubbo:registry protocol="zookeeper" port="2181" address="118.144.78.211" />
+   	</beans>
+   	
+   	<beans profile="product">
+	    <dubbo:registry protocol="zookeeper" port="2181" address="10.25.0.237" />
+   	</beans>
+</beans>
